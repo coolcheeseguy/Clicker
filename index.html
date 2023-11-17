@@ -1,218 +1,118 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>
-   Clicker Game
-  </title>
-<!-- Bootstrap CSS -->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
-<meta content="noindex, nofollow" name="robots"/></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Clicker Game with Buildings</title>
+  <style>
+    /* Add your styles here */
+  </style>
+</head>
 <body>
-<!-- Header Section -->
-<header class="bg-dark text-white text-center p-4">
-<h1>
-    Clicker Game
-   </h1>
-</header>
-<!-- Clicker Section -->
-<section class="container mt-5 text-center" id="clicker">
-<h2>
-    Click the Button!
-   </h2>
-<button class="btn btn-primary btn-lg mt-3" id="clickButton">
-    Click Me
-   </button>
-<p id="score">
-    Score: 0
-   </p>
-</section>
-<!-- Upgrades Section -->
-<section class="container mt-5" id="upgrades">
-<h2>
-    Upgrades
-   </h2>
-<div class="row mt-3">
-<div class="col-md-6">
-<h4>
-      Multiple Purchases
-     </h4>
-<ul class="list-group" id="multipleUpgrades">
-<li class="list-group-item d-flex justify-content-between align-items-center">
-       Upgrade 1
-       <span class="badge badge-primary badge-pill">
-        0
-       </span>
-</li>
-<li class="list-group-item d-flex justify-content-between align-items-center">
-       Upgrade 2
-       <span class="badge badge-primary badge-pill">
-        0
-       </span>
-</li>
-<li class="list-group-item d-flex justify-content-between align-items-center">
-       Upgrade 3
-       <span class="badge badge-primary badge-pill">
-        0
-       </span>
-</li>
-<li class="list-group-item d-flex justify-content-between align-items-center">
-       Upgrade 4
-       <span class="badge badge-primary badge-pill">
-        0
-       </span>
-</li>
-<li class="list-group-item d-flex justify-content-between align-items-center">
-       Upgrade 5
-       <span class="badge badge-primary badge-pill">
-        0
-       </span>
-</li>
-</ul>
-</div>
-<div class="col-md-6">
-<h4>
-      One-Time Purchases
-     </h4>
-<ul class="list-group" id="oneTimeUpgrades">
-<li class="list-group-item d-flex justify-content-between align-items-center">
-       Upgrade 1
-       <span class="badge badge-primary badge-pill">
-        0
-       </span>
-</li>
-<li class="list-group-item d-flex justify-content-between align-items-center">
-       Upgrade 2
-       <span class="badge badge-primary badge-pill">
-        0
-       </span>
-</li>
-<li class="list-group-item d-flex justify-content-between align-items-center">
-       Upgrade 3
-       <span class="badge badge-primary badge-pill">
-        0
-       </span>
-</li>
-<li class="list-group-item d-flex justify-content-between align-items-center">
-       Upgrade 4
-       <span class="badge badge-primary badge-pill">
-        0
-       </span>
-</li>
-<li class="list-group-item d-flex justify-content-between align-items-center">
-       Upgrade 5
-       <span class="badge badge-primary badge-pill">
-        0
-       </span>
-</li>
-</ul>
-</div>
-</div>
-</section>
-<!-- Bootstrap & jQuery JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
-</script>
-<!-- Game JS -->
-<script type='text/javascript'  src="https://codepal.ai/93791460bd4591916fae6788dd691570096e47a0e47061cdead407edc2363560/inject.js"></script></body>
-</html>
+  <h1>Cookie Clicker Game with Buildings</h1>
+  <p>Click the cookie to increase your score!</p>
+  <p class="score">Score: <span id="score">0</span></p>
+  <div class="cookie" id="cookie"></div>
 
+  <h2>Buildings</h2>
+  <div id="buildings">
+    <!-- Buildings will be dynamically generated here -->
+  </div>
 
-<style>
-    body {
-    font-family: Arial, sans-serif;
-}
-
-header {
-    font-weight: bold;
-}
-
-#clicker {
-    background-color: #f7f7f7;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-#upgrades {
-    padding: 40px 0;
-}
-
-#upgrades h4 {
-    margin-bottom: 20px;
-}
-
-.list-group-item {
-    cursor: pointer;
-}
-</style>
-
-<script nonce="KSzlPfwR" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script nonce="KSzlPfwR" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"></script>
-<script>
-    (function() {
-        window.onload = function() {
-            parent.iframeLoaded();
-        }
-    })();
-    try {
-    $(document).ready(function() {
+  <script>
     let score = 0;
-    let clickValue = 1;
-    let multipleUpgrades = [1, 2, 3, 4, 5];
-    let oneTimeUpgrades = [10, 20, 30, 40, 50];
+    let scorePerSecond = 0;
+    const scoreDisplay = document.getElementById('score');
+    const cookie = document.getElementById('cookie');
+    const buildings = [
+      { name: 'Bakery', cost: 10, cps: 1, count: 0 },
+      { name: 'Factory', cost: 50, cps: 5, count: 0 },
+      // Add more buildings here
+    ];
 
-    // Click Button Event
-    $('#clickButton').click(function() {
-        score += clickValue;
-        updateScore();
-    });
-
-    // Multiple Upgrades Event
-    $('#multipleUpgrades li').click(function() {
-        let index = $(this).index();
-        let upgradeValue = multipleUpgrades[index];
-        clickValue += upgradeValue;
-        $(this).find('.badge').text(parseInt($(this).find('.badge').text()) + 1);
-        updateScore();
-    });
-
-    // One-Time Upgrades Event
-    $('#oneTimeUpgrades li').click(function() {
-        let index = $(this).index();
-        let upgradeValue = oneTimeUpgrades[index];
-        if (score >= upgradeValue) {
-            score -= upgradeValue;
-            clickValue += upgradeValue;
-            $(this).find('.badge').text('Purchased');
-            updateScore();
-        } else {
-            alert('Insufficient score to purchase this upgrade.');
-        }
-    });
-
-    // Save Data Every Minute
-    setInterval(function() {
-        saveData();
-    }, 60000);
-
-    // Update Score
     function updateScore() {
-        $('#score').text('Score: ' + score);
+      score += scorePerSecond;
+      scoreDisplay.textContent = Math.floor(score);
     }
 
-    // Save Data
-    function saveData() {
-        // Code to save data goes here
-        console.log('Data saved.');
+    function updateBuildingCost(index) {
+      const buildingElement = document.getElementById(`building${index}`);
+      buildingElement.dataset.cost = buildings[index].cost;
+      buildingElement.textContent = `${buildings[index].name} - Cost: ${buildings[index].cost} points - CPS: ${buildings[index].cps}`;
     }
-});
-    } catch (e) {
-        console.log("Error in JS code", e);
+
+    function purchaseBuilding(index) {
+      const building = buildings[index];
+      if (score >= building.cost) {
+        score -= building.cost;
+        building.count++;
+        scorePerSecond += building.cps;
+        building.cost = Math.floor(building.cost * 1.15); // Increase the cost for the next purchase
+        updateBuildingCost(index);
+        updateScore();
+      }
     }
-</script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    cookie.addEventListener('click', function() {
+      score++;
+      updateScore();
+    });
+
+    window.setInterval(function() {
+      updateScore();
+    }, 1000);
+
+    const buildingContainer = document.getElementById('buildings');
+    for (let i = 0; i < buildings.length; i++) {
+      const building = buildings[i];
+      const buildingElement = document.createElement('div');
+      buildingElement.setAttribute('id', `building${i}`);
+      buildingElement.textContent = `${building.name} - Cost: ${building.cost} points - CPS: ${building.cps}`;
+      buildingElement.dataset.cost = building.cost;
+      buildingElement.addEventListener('click', function() {
+        purchaseBuilding(i);
+      });
+      buildingContainer.appendChild(buildingElement);
+    }
+     // Previous code ...
+
+// Load game data from local storage
+function loadGame() {
+  const savedData = JSON.parse(localStorage.getItem('cookieClickerSave'));
+  if (savedData) {
+    score = savedData.score;
+    scorePerSecond = savedData.scorePerSecond;
+    buildings.forEach((building, index) => {
+      building.count = savedData.buildings[index].count;
+      building.cost = savedData.buildings[index].cost;
+    });
+    updateScore();
+    buildings.forEach((building, index) => {
+      updateBuildingCost(index);
+    });
+  }
+}
+
+// Save game data to local storage
+function saveGame() {
+  const saveData = {
+    score: score,
+    scorePerSecond: scorePerSecond,
+    buildings: buildings.map(building => ({ count: building.count, cost: building.cost })),
+  };
+  localStorage.setItem('cookieClickerSave', JSON.stringify(saveData));
+}
+
+// Load the game on page load
+loadGame();
+
+// Update the saved data every 10 seconds
+window.setInterval(function() {
+  saveGame();
+}, 10000);
+
+// Remaining code...
+
+  </script>
+</body>
 </html>
