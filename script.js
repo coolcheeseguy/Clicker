@@ -134,18 +134,6 @@ for (let i = 0; i < upgradeNames.length; i++) {
   addUpgradeButton(i, upgradeNames[i]);
 }
 
-// Add achievements
-for (let i = 0; i < achievementDescriptions.length; i++) {
-  addAchievement(i, achievementDescriptions[i]);
-}
-
-// Display unlocked achievements
-achievements.forEach((achievement) => {
-  if (achievement.unlocked) {
-    displayUnlockedAchievement(achievement);
-  }
-});
-
 // Function to add upgrade buttons
 function addUpgradeButton(index, upgradeName) {
   const upgrade = {
