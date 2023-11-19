@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ... (existing head content) ... -->
   <link rel="stylesheet" href="style.css">
   <title>Byte Clicker</title>
 </head>
 <body>
   <div class="container">
     <h1>Byte Clicker</h1>
+    
+    <!-- Add the following input field for the game name -->
+    <label for="gameName">Enter Game Name: </label>
+    <input type="text" id="gameName" placeholder="Type your game name">
+    
     <p id="byteCount">Bytes: 0</p>
     <button id="clickButton">Click me!</button>
-    <div id="upgrades">
-      <!-- Upgrade buttons will be appended here dynamically -->
-    </div>
-    <div id="achievements">
-      <!-- Achievement messages will be appended here dynamically -->
-    </div>
+    
+    <!-- ... (existing content) ... -->
+    
+    <div id="upgrades"></div>
+    <div id="achievements"></div>
   </div>
   <script src="script.js"></script>
 </body>
