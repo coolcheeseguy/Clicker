@@ -60,7 +60,9 @@ const upgradeNames = [
   // ... add more upgrade names
 ];
 
-// Achievement descriptions
+// ... (existing code)
+
+// Define preset achievement descriptions
 const achievementDescriptions = [
   'Click 10 times',
   'Click 100 times',
@@ -91,8 +93,41 @@ const achievementDescriptions = [
   'Transcendent Byte Immortal',
   'Divine Code Guardian',
   'Eternal Code Explorer',
+  'Byte Archivist',
+  'Temporal Code Shaper',
+  'Stellar Byte Pioneer',
+  'Quantum Byte Sculptor',
+  'Nebula Code Nomad',
+  'Code Quantum Seeker',
+  'Celestial Byte Observer',
+  'Eternal Code Pilgrim',
+  'Galactic Byte Artisan',
+  'Dimensional Code Traveler',
   // ... add more achievement descriptions
 ];
+
+for (let i = 0; i < achievementDescriptions.length; i++) {
+  addAchievement(i, achievementDescriptions[i]);
+}
+
+// ... (existing code)
+
+function checkAchievements() {
+  achievements.forEach((achievement) => {
+    const baseRequirement = 10;
+    const groupSize = 6;
+    const groupIndex = Math.floor(achievements.indexOf(achievement) / groupSize);
+    const multiplier = (groupIndex >= 1) ? Math.pow(10, groupIndex - 1) : 0;
+
+    if (!achievement.unlocked && byteCount >= baseRequirement * (multiplier + 1)) {
+      achievement.unlocked = true;
+      displayAchievement(achievement);
+      displayUnlockedAchievement(achievement);
+    }
+  });
+}
+
+// ... (existing code)
 
 // Add upgrade buttons
 for (let i = 0; i < upgradeNames.length; i++) {
