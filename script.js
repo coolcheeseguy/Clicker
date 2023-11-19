@@ -20,6 +20,12 @@ clickButton.addEventListener('click', () => {
   saveGame(); // Save game state after clicking the button
 });
 
+let interval = setInterval(function() {
+  byteCount += byteRate;
+  updateByteCount();
+}, 1000); // 1000 milliseconds = 1 second
+
+
 // Save game state every 30 seconds
 setInterval(saveGame, 30000);
 
@@ -122,11 +128,6 @@ function buyUpgrade(index) {
     saveGame(); // Save game state after buying an upgrade
   }
 }
-
-let interval = setInterval(function() {
-  byteCount += byteRate;
-  console.log("Byte count:", byteCount);
-}, 1000); // 1000 milliseconds = 1 second
 
 // Function to update byte rate on the screen
 function updateByteRate() {
