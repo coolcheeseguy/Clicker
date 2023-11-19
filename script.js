@@ -139,6 +139,97 @@ function saveGame() {
   localStorage.setItem('byteClickerSave', JSON.stringify(gameState));
 }
 
+// ... (existing code)
+
+// Define more preset upgrade names
+const upgradeNames = [
+  'Quantum Code Entropy',
+  'Recursive Algorithmic Enhancement',
+  'Lunar Byte Beacon',
+  'Supernova Code Explosion',
+  'Neutrino Byte Emission',
+  'Enigmatic Code Anomaly',
+  'Chrono Code Manipulator',
+  'Cosmic String Compiler',
+  'Techno Byte Wizardry',
+  'Dimensional Code Shift',
+  'Astro Byte Voyager',
+  'Vortex Code Generator',
+  'Photon Byte Flux',
+  'Nova Code Catalyst',
+  'Pulsar Byte Cascade',
+  'Spectral Code Resonance',
+  'Hyperdrive Byte Accelerator',
+  'Binary Code Symphony',
+  'Nebula Byte Array',
+  'Quasar Code Amplifier',
+  'Plasma Byte Fusion',
+  'Ether Code Nexus',
+  'Infinity Code Nexus',
+  'Quantum Byte Hologram',
+  'Dark Matter Code Mirage',
+  'Nebulous Byte Cascade',
+  'Celestial Code Alchemy',
+  'Galactic Byte Harmony',
+  'Infinite Code Tapestry',
+  // ... add more upgrade names
+];
+
+// Define more preset achievement descriptions
+const achievementDescriptions = [
+  'Click 10 times',
+  'Click 100 times',
+  'Click 1,000 times',
+  'Click 10,000 times',
+  'Click 100,000 times',
+  'Click 1 Million times',
+  'Click Billionaire',
+  'Byte Tycoon',
+  'Building a Legacy',
+  'Byte Dynasty',
+  'Byte Empire',
+  'Quantum Leap',
+  'Cosmic Code Connoisseur',
+  'Universal Byte Mastery',
+  'Multiverse Explorer',
+  'Code Divinity',
+  'Eternal Byte Sage',
+  'Byte Ascendant',
+  'Code Transcendent',
+  'Quantum Code Voyager',
+  'Interstellar Code Pioneer',
+  'Galactic Code Voyager',
+  'Universal Code Traveler',
+  'Celestial Code Adventurer',
+  'Byte Enlightenment',
+  'Code Ascension',
+  'Transcendent Byte Immortal',
+  'Divine Code Guardian',
+  'Eternal Code Explorer',
+  'Byte Archivist',
+  'Temporal Code Shaper',
+  'Stellar Byte Pioneer',
+  'Quantum Byte Sculptor',
+  'Nebula Code Nomad',
+  'Code Quantum Seeker',
+  'Celestial Byte Observer',
+  'Eternal Code Pilgrim',
+  'Galactic Byte Artisan',
+  'Dimensional Code Traveler',
+  // ... add more achievement descriptions
+];
+
+for (let i = 0; i < 100; i++) {
+  addUpgradeButton(i, upgradeNames[i]);
+}
+
+for (let i = 0; i < 300; i++) {
+  addAchievement(i, achievementDescriptions[i]);
+}
+
+// ... (existing code)
+
+
 // Load the game state from localStorage
 function loadGame() {
   const savedGame = localStorage.getItem('byteClickerSave');
