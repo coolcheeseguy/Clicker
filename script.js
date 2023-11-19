@@ -123,6 +123,11 @@ function buyUpgrade(index) {
   }
 }
 
+let interval = setInterval(function() {
+  byteCount += byteRate;
+  console.log("Byte count:", byteCount);
+}, 1000); // 1000 milliseconds = 1 second
+
 // Function to update byte rate on the screen
 function updateByteRate() {
   // Assuming you have an element with the id 'byteRate' to display the byte rate
