@@ -1,9 +1,11 @@
+let ascendMulti = 1;
 let byteCount = 0;
 let byteRate = 0;
 let buildings = []; // Added to store building data
 let upgrades = [];
 let gameName = "";
 
+const ascend = document.getElementById('ascend');
 const byteCountElement = document.getElementById('byteCount');
 const clickButton = document.getElementById('clickButton');
 const upgradesContainer = document.getElementById('upgrades');
@@ -16,7 +18,12 @@ loadGame();
 clickButton.addEventListener('click', () => {
   byteCount++;
   updateByteCount();
-  checkAchievements();
+  saveGame(); // Save game state after clicking the button
+});
+
+ascend.addEventListener('click', () => {
+  if 
+  ascendMulti++;
   saveGame(); // Save game state after clicking the button
 });
 
@@ -98,6 +105,7 @@ function saveGame() {
     byteRate: byteRate,
     buildings: buildings,
     upgrades: upgrades,
+    ascendMulti: ascendMulti
   };
   localStorage.setItem('byteClickerSave', JSON.stringify(gameState));
 }
@@ -111,6 +119,7 @@ function loadGame() {
     byteCount = gameState.byteCount;
     byteRate = gameState.byteRate;
     buildings = gameState.buildings || []; // Load buildings
+    ascendMulti = gameState.ascendMulti
     updateByteCount();
     updateByteRate();
     gameNameInput.value = gameName;
