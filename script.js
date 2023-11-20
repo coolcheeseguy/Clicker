@@ -22,13 +22,16 @@ clickButton.addEventListener('click', () => {
 });
 
 ascend.addEventListener('click', () => {
-  if 
+  if byteCount > 999999 {
   ascendMulti++;
+  byteCount = 0
+  byteRate = 0
   saveGame(); // Save game state after clicking the button
 });
+}
 
 let interval = setInterval(function() {
-  byteCount += byteRate;
+  byteCount = byteCount + byteRate * ascendMulti;
   updateByteCount();
 }, 1000); // 1000 milliseconds = 1 second
 
