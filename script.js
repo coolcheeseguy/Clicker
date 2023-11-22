@@ -24,8 +24,9 @@ clickButton.addEventListener('click', () => {
 ascend.addEventListener('click', () => {
   if byteCount > 999999 {
   ascendMulti++;
-  byteCount = 0
-  byteRate = 0
+  byteCount = 0;
+  byteRate = 0;
+  updateByteCount();
   saveGame(); // Save game state after clicking the button
 });
 }
